@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Processing Factory</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'main/css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Tea Processing Factory</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="{% url 'calculator' %}">Calculator</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>About Us</h2>
+            <p>Information about the factory...</p>
+            <img src="{% static 'main/images/factory.jpg' %}" alt="Factory Image">
+        </section>
+        <section id="products">
+            <h2>Our Products</h2>
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                </tr>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>${{ product.price }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us at: info@teafactory.com</p>
+    </footer>
+</body>
+</html>
